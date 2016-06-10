@@ -1,0 +1,29 @@
+{
+  "name": "learn-gulp",
+  "version": "1.0.0",
+  "description": "learn gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "121395113@qq.com",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "browser-sync": "^2.13.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-compass": "^2.1.0",
+    "gulp-data": "^1.2.1",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-pug": "^3.0.3",
+    "gulp-sourcemaps": "^1.6.0",
+    "wiredep": "^4.0.0"
+  }
+}

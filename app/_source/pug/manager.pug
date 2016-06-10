@@ -1,0 +1,72 @@
+extends ./layout/layout
+append head
+	title 管理中心
+	link(rel='stylesheet',href='css/style.css')
+block content
+	header.header
+		dl.topbar
+			dt
+				a.user(href='javascript:;')
+			dd
+				a.theme(href='javascript:;')
+				a.setting(href='javascript:;')
+	section.accelerate
+		div.contain
+			button.jiasu 一键内存加速
+		div.zhezhao
+	//- 应用升级
+	section.update(data-module='a')
+		h2.a-title 应用升级
+		div.a-content
+			div.list-box
+				a(href='#')
+					img(src='images/pic/bibei/01.png')
+				a(href='#')
+					img(src='images/pic/bibei/02.png')
+				a(href='#')
+					img(src='images/pic/bibei/03.png')
+				a(href='#')
+					img(src='images/pic/bibei/04.png')
+				p …有<span>10</span>个应用可更新
+			button.btn <span>10</span>
+	//- 九宫格
+	section.tab-grid
+		table
+			tr
+				td
+					button
+						span.manager-01
+						h3 应用卸载
+				td
+					button
+						span.manager-02
+						h3 清理垃圾
+				td
+					button
+						span.manager-03
+						h3 文件管理
+			tr
+				td
+					button
+						span.manager-04
+						h3 开机优化
+				td
+					button
+						span.manager-05
+						h3 收到的文件
+				td
+					button
+						span.manager-06
+						h3 连接电脑
+			tr
+				td
+					button
+						span.manager-07
+						h3 留言板
+				td
+					button
+						span.manager-08
+						h3 关于
+
+block script
+	script(src='script/Require.js',data-main='script/index.js')
