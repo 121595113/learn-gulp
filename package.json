@@ -17,11 +17,12 @@
     "browser-sync": "^2.13.0",
     "css-loader": "^0.23.1",
     "del": "^2.2.0",
-    "extract-text-webpack-plugin": "^1.0.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean-css": "^2.0.10",
     "gulp-compass": "^2.1.0",
     "gulp-data": "^1.2.1",
+    "gulp-imagemin": "^3.0.1",
     "gulp-load-plugins": "^1.2.4",
     "gulp-plumber": "^1.1.0",
     "gulp-pug": "^3.0.3",
@@ -30,7 +31,6 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1",
     "wiredep": "^4.0.0"
   }
 }

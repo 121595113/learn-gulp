@@ -1,78 +1,11 @@
 body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjQ1cHgiIGN5PSI0NXB4IiByPSIzMCUiPjxzdG9wIG9mZnNldD0iMzMuMzMzMzMlIiBzdG9wLWNvbG9yPSIjMDBmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMWU5MGZmIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-  background-size: 100%;
-  background-image: -webkit-radial-gradient(45px 45px, #00ffff 10px, #1e90ff 30px);
-  background-image: radial-gradient(45px 45px, #00ffff 10px, #1e90ff 30px);
+  background-image: linear-gradient(to top, #ffa500, #008000);
   color: yellow;
   width: 5.625rem;
+  _zoom: 1;
 }
 
 .head {
   font-size: 5rem;
 }
-
-.cur-lv1, .cur-lv2, .cur-lv3, .cur-lv4, .cur-lv5, .cur-lv6, .cur-lv7-active, .cur-lv7, .cur-lv7:active {
-  background: url('../images/cur-s0b0a785aa0.png');
-  background-size: 4.75rem 44rem;
-  background-repeat: no-repeat;
-}
-
-.cur-lv7:active {
-  width: 4.75rem;
-  height: 5.5rem;
-  background-position: 0 85.71429%;
-}
-.cur-lv1 {
-  width: 4.75rem;
-  height: 5.5rem;
-  background-position: 0 0;
-}
-
-.cur-lv2 {
-  width: 4.75rem;
-  height: 5.5rem;
-  background-position: 0 14.28571%;
-}
-
-.cur-lv3 {
-  width: 4.75rem;
-  height: 5.5rem;
-  background-position: 0 28.57143%;
-}
-
-.cur-lv4 {
-  width: 4.75rem;
-  height: 5.5rem;
-  background-position: 0 42.85714%;
-}
-
-.cur-lv5 {
-  width: 4.75rem;
-  height: 5.5rem;
-  background-position: 0 57.14286%;
-}
-
-.cur-lv6 {
-  width: 4.75rem;
-  height: 5.5rem;
-  background-position: 0 71.42857%;
-}
-
-.cur-lv7-active {
-  width: 4.75rem;
-  height: 5.5rem;
-  background-position: 0 85.71429%;
-}
-
-.cur-lv7 {
-  width: 4.75rem;
-  height: 5.5rem;
-  background-position: 0 100%;
-}
-
-
-
-/*# sourceMappingURL=test.css.map */
