@@ -3,6 +3,8 @@
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
+import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import del from 'del';
 import path from 'path';
 import fs from 'fs';
@@ -72,7 +74,32 @@ gulp.task('server', ['pug', 'compass'], () => {
 });
 
 gulp.task('default', () => {
-
+    return gulp.src('app/js/entry.js')
+        .pipe($.webpack({
+            watch: true,
+            module: {
+                loaders: [
+                    // { test: /\.css$/, loader: 'style!css' },
+                    { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },
+                    { test: /\.png$/, loader: "url-loader?mimetype=image/png" }
+                ],
+            },
+            output: {
+                filename: 'a.js',
+            },
+            plugins: [
+                new webpack.optimize.UglifyJsPlugin({
+                    compress: {
+                        warnings: false
+                    }
+                }),
+                new webpack.optimize.OccurenceOrderPlugin(),
+                new webpack.optimize.AggressiveMergingPlugin(),
+                new webpack.optimize.CommonsChunkPlugin('common.js'),
+                new ExtractTextPlugin("css/styles.css")
+            ]
+        }))
+        .pipe(gulp.dest('dist/'));
 });
 
 // 帮助说明

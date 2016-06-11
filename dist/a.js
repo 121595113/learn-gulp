@@ -1,0 +1,1 @@
+webpackJsonp([1,0],[function(o,t,n){n(2),document.write("It works!"),document.write(n(1))},function(o,t){o.exports="It works from module.js."},function(o,t){}]);
