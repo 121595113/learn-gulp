@@ -80,7 +80,7 @@ gulp.task('default', () => {
             module: {
                 loaders: [
                     // { test: /\.css$/, loader: 'style!css' },
-                    { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },
+                    { test: /\.css$/, loader: ExtractTextPlugin.extract("css-loader") },
                     { test: /\.png$/, loader: "url-loader?mimetype=image/png" }
                 ],
             },
