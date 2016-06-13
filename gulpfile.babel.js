@@ -4,10 +4,10 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import cleancss from 'gulp-clean-css';
-import webpack from 'webpack';
 import del from 'del';
 import path from 'path';
 import fs from 'fs';
+import merge from "merge-stream";
 import { stream as wiredep } from 'wiredep';
 
 const $ = gulpLoadPlugins();
@@ -77,72 +77,34 @@ gulp.task('compass:build', () => {
         }))
         .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
         .pipe(cleancss({
-        	compatibility: 'ie8'
+            compatibility: 'ie8'
         }))
         .pipe(gulp.dest('dist/css'))
 });
 
 gulp.task('script', () => {
-    return gulp.src('app/js/entry.js')
-        .pipe($.webpack({
-            module: {
-                loaders: [
-                    { test: /\.css$/, loader: 'style!css' },
-                    { test: /\.png$/, loader: "url-loader?mimetype=image/png" }
-                ],
-            },
-            output: {
-                filename: 'output.js',
-            },
-            plugins: [
-                new webpack.optimize.UglifyJsPlugin({
-                    compress: {
-                        warnings: false
-                    }
-                }),
-                new webpack.optimize.OccurenceOrderPlugin(),
-                new webpack.optimize.AggressiveMergingPlugin(),
-                // new webpack.optimize.CommonsChunkPlugin('common.js'),
-            ]
-        }))
-        .pipe(gulp.dest('app/js/'));
-});
-
-gulp.task('script:build', () => {
-    return gulp.src('app/js/entry.js')
-        .pipe($.webpack({
-            module: {
-                loaders: [
-                    { test: /\.css$/, loader: 'style!css' },
-                    { test: /\.png$/, loader: "url-loader?mimetype=image/png" }
-                ],
-            },
-            output: {
-                filename: 'output.js',
-            },
-            plugins: [
-                new webpack.optimize.UglifyJsPlugin({
-                    compress: {
-                        warnings: false
-                    }
-                }),
-                new webpack.optimize.OccurenceOrderPlugin(),
-                new webpack.optimize.AggressiveMergingPlugin(),
-                // new webpack.optimize.CommonsChunkPlugin('common.js'),
-            ]
-        }))
+    return gulp.src('app/js/**/*.js')
+        .pipe($.uglify())
         .pipe(gulp.dest('dist/js/'));
 });
 
+
 gulp.task('imagemin', () => {
-    return gulp.src('app/images/**/*')
+    let images1 = gulp.src('app/images/**/*')
         .pipe($.imagemin({
             progressive: true
         }))
-        .pipe(gulp.dest('dist/images/'))
+        .pipe(gulp.dest('dist/images/')),
+        images2 = gulp.src('app/*.{ico,png}')
+        .pipe($.imagemin({
+            progressive: true
+        }))
+        .pipe(gulp.dest('dist/'));
+
+    return merge(images1, images2);
 });
 
-gulp.task('server', ['pug', 'compass', 'script'], () => {
+gulp.task('server', ['pug', 'compass'], () => {
     browserSync({
         notify: false,
         port: 9000,
@@ -163,15 +125,13 @@ gulp.task('server', ['pug', 'compass', 'script'], () => {
 
     gulp.watch('app/_source/pug/**/*.pug', ['pug'])
     gulp.watch('app/_source/sass/**/*.scss', ['compass'])
-    gulp.watch('app/js/**/*.js', ['script'])
-
 });
 
 gulp.task('clean', del.bind(null, ['dist']));
 
-gulp.task('build', ['pug:build', 'compass:build', 'imagemin', 'script:build'])
+gulp.task('build', ['pug:build', 'compass:build', 'imagemin', 'script'])
 
-gulp.task('default', ['clean'],() => {
+gulp.task('default', ['clean'], () => {
     gulp.start('build')
 });
 
@@ -183,6 +143,6 @@ gulp.task('help', () => {
     console.log("pug               :pug编译");
     console.log("script            :js编译");
     console.log("server            :开发模式 开启实时监听");
-    console.log("不加参数           :生产模式 打包压缩文件到dist目录");
+    console.log("noArgument        :生产模式 打包压缩文件到dist目录");
 
 });

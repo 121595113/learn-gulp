@@ -13,7 +13,7 @@ body{
 	font-size: rem-calc(80);
 }
 
-// @include rem-sprites("cur/*.png");
+@include rem-sprites("cur/*.png");
 
 // div{
 // 	@include rem-sprite("cur/*.png",lv1);
