@@ -8,7 +8,6 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import del from 'del';
 import path from 'path';
 import fs from 'fs';
-import { stream as wiredep } from 'wiredep';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
