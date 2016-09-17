@@ -1,0 +1,71 @@
+body {
+  display: flex;
+  background-image: linear-gradient(to top, #ffa500, #008000);
+  color: yellow;
+  width: 5.625rem;
+  _zoom: 1;
+}
+
+.head {
+  font-size: 5rem;
+}
+
+.cur-lv2, .cur-lv3, .cur-lv4, .cur-lv5, .cur-lv6, .cur-lv7-active, .cur-lv7, .cur-lv7:active {
+  background: url('../images/cur-sc717962012.png');
+  background-size: 4.75rem 38.5rem;
+  background-repeat: no-repeat;
+}
+
+.cur-lv7:active {
+  width: 4.75rem;
+  height: 5.5rem;
+  background-position: 0 83.33333%;
+}
+.cur-lv2 {
+  width: 4.75rem;
+  height: 5.5rem;
+  background-position: 0 0;
+}
+
+.cur-lv3 {
+  width: 4.75rem;
+  height: 5.5rem;
+  background-position: 0 16.66667%;
+}
+
+.cur-lv4 {
+  width: 4.75rem;
+  height: 5.5rem;
+  background-position: 0 33.33333%;
+}
+
+.cur-lv5 {
+  width: 4.75rem;
+  height: 5.5rem;
+  background-position: 0 50%;
+}
+
+.cur-lv6 {
+  width: 4.75rem;
+  height: 5.5rem;
+  background-position: 0 66.66667%;
+}
+
+.cur-lv7-active {
+  width: 4.75rem;
+  height: 5.5rem;
+  background-position: 0 83.33333%;
+}
+
+.cur-lv7 {
+  width: 4.75rem;
+  height: 5.5rem;
+  background-position: 0 100%;
+}
+
+body {
+  background: red;
+  opacity: 0.5;
+}
+
+/*# sourceMappingURL=style.css.map */

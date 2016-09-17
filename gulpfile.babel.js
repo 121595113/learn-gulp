@@ -8,7 +8,6 @@ import del from 'del';
 import path from 'path';
 import fs from 'fs';
 import merge from "merge-stream";
-import { stream as wiredep } from 'wiredep';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -59,11 +58,10 @@ gulp.task('compass', () => {
             sourcemap: true
         }))
         .pipe($.sourcemaps.init({ loadMaps: true }))
-        .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
+        .pipe($.autoprefixer({ browsers: ['> 1% in CN', 'last 2 versions', 'Firefox ESR','UCAndroid'] }))
         .on('error', () => {})
         .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('app/css'))
-        .pipe(reload({ stream: true }))
 });
 
 gulp.task('compass:build', () => {
@@ -75,7 +73,7 @@ gulp.task('compass:build', () => {
             css: 'app/css',
             image: 'app/images'
         }))
-        .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
+        .pipe($.autoprefixer({ browsers: ['> 1% in CN', 'last 2 versions', 'Firefox ESR'] }))
         .pipe(cleancss({
             compatibility: 'ie8'
         }))
@@ -110,11 +108,13 @@ gulp.task('server', ['pug', 'compass'], () => {
         port: 9000,
         server: {
             baseDir: ['app'],
-            index: 'home.html',
+            index: 'index.html',
             routes: {
                 // '/bower_components': 'bower_components'
             }
-        }
+        },
+        browser: ["google chrome", "chrome"],
+        open:'ui'// local, external, ui, ui-external, tunnel or false
     });
 
     gulp.watch([
@@ -143,6 +143,6 @@ gulp.task('help', () => {
     console.log("pug               :pug编译");
     console.log("script            :js编译");
     console.log("server            :开发模式 开启实时监听");
-    console.log("noArgument        :生产模式 打包压缩文件到dist目录");
+    console.log("null       	   :生产模式 打包压缩文件到dist目录");
 
 });
