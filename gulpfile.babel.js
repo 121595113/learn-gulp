@@ -46,7 +46,7 @@ gulp.task('pug:build', () => {
         .pipe(gulp.dest('dist'))
 });
 
-gulp.task('compass', () => {
+gulp.task('compass', (callback) => {
     gulp.src('app/_source/sass/**/*.scss')
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
@@ -61,10 +61,11 @@ gulp.task('compass', () => {
         .pipe($.autoprefixer({ browsers: ['> 1% in CN', 'last 2 versions', 'Firefox ESR','UCAndroid'] }))
         .on('error', () => {})
         .pipe($.sourcemaps.write('.'))
-        .pipe(gulp.dest('app/css'))
+        .pipe(gulp.dest('app/css'));
+        callback();
 });
 
-gulp.task('compass:build', () => {
+gulp.task('compass:build', (callback) => {
     gulp.src('app/_source/sass/**/*.scss')
         .pipe($.plumber())
         .pipe($.compass({
@@ -77,7 +78,8 @@ gulp.task('compass:build', () => {
         .pipe(cleancss({
             compatibility: 'ie8'
         }))
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest('dist/css'));
+        callback();
 });
 
 gulp.task('script', () => {
@@ -120,7 +122,8 @@ gulp.task('server', ['pug', 'compass'], () => {
     gulp.watch([
         'app/**/*.html',
         'app/images/**/*',
-        'app/js/**/*'
+        'app/js/**/*',
+        'app/css/**/*.css'
     ]).on('change', reload);
 
     gulp.watch('app/_source/pug/**/*.pug', ['pug'])
